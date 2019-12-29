@@ -1,12 +1,8 @@
-import React, {ReactNode} from 'react';
-import {View, StyleSheet, ViewStyle} from 'react-native';
+import React from 'react';
+import {View, StyleSheet} from 'react-native';
+import {ViewProps} from '../interfaces';
 
-type Props = {
-  children?: ReactNode;
-  style?: ViewStyle;
-};
-
-const Card = (props: Props) => {
+export const Card = (props: ViewProps) => {
   return <View style={{...styles.card, ...props.style}}>{props.children}</View>;
 };
 

@@ -1,16 +1,18 @@
 import React from 'react';
-import {TextInput, TextProps, StyleSheet, TextStyle} from 'react-native';
+import {TextInput, StyleSheet} from 'react-native';
+import {TextInputProps} from '../interfaces';
 
-interface MyPorps extends TextProps {
-  style: TextStyle;
-}
-
-const Input = (props: MyPorps) => {
-  return <TextInput style={{...styles.input, ...props.style}} />;
+export const Input = (props: TextInputProps) => {
+  return <TextInput {...props} style={{...styles.input, ...props.style}} />;
 };
 
 const styles = StyleSheet.create({
-  input: {},
+  input: {
+    height: 30,
+    borderBottomColor: 'grey',
+    borderBottomWidth: 1,
+    marginVertical: 10,
+  },
 });
 
 export default Input;

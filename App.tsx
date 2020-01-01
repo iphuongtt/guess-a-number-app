@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Header from './components/Header';
 import {StartGameScreen, GameScreen, GameOverScreen} from './screens';
+import {PressEvent} from './interfaces';
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
@@ -12,7 +13,7 @@ export default function App() {
     setUserNumber(null);
   };
 
-  const startGameHandler = selectedNumber => {
+  const startGameHandler: PressEvent = selectedNumber => {
     setUserNumber(selectedNumber);
     setGuessRounds(0);
   };
@@ -22,13 +23,6 @@ export default function App() {
   };
 
   let content = <StartGameScreen onStartGame={startGameHandler} />;
-  content = (
-    <GameOverScreen
-      roundsNumber={1}
-      userNumber={1}
-      onRestart={configureNewGameHandler}
-    />
-  );
   if (userNumber && guessRounds <= 0) {
     content = (
       <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />

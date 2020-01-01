@@ -8,12 +8,12 @@ import {
   Keyboard,
   Alert,
 } from 'react-native';
-import {Card, Input, NumberContainer} from '../components';
+import {Card, Input, NumberContainer, MainButton} from '../components';
 import Colors from '../constants/colors';
-import {ViewProps} from '../interfaces';
+import {ViewProps, PressEvent} from '../interfaces';
 
 interface Props extends ViewProps {
-  onStartGame: Function;
+  onStartGame: PressEvent;
 }
 
 export const StartGameScreen = (props: Props) => {
@@ -51,10 +51,9 @@ export const StartGameScreen = (props: Props) => {
       <Card style={styles.summaryContainer}>
         <Text>You selected</Text>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button
-          title="START GAME"
-          onPress={() => props.onStartGame(selectedNumber)}
-        />
+        <MainButton onPress={() => props.onStartGame(selectedNumber)}>
+          START GAME
+        </MainButton>
       </Card>
     );
   }

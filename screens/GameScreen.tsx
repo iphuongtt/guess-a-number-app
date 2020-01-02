@@ -81,14 +81,14 @@ export const GameScreen = (props: Props) => {
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card style={styles.buttonContainer}>
         <MainButton onPress={nextGuessHandler.bind(this, 'lower')}>
-          <Icon name={`${iconPrefix}add`} size={18} />
-        </MainButton>
-        <MainButton onPress={nextGuessHandler.bind(this, 'greater')}>
           <Icon name={`${iconPrefix}remove`} size={18} />
         </MainButton>
+        <MainButton onPress={nextGuessHandler.bind(this, 'greater')}>
+          <Icon name={`${iconPrefix}add`} size={18} />
+        </MainButton>
       </Card>
-      <View style={styles.list}>
-        <ScrollView>
+      <View style={styles.listContainer}>
+        <ScrollView contentContainerStyle={styles.list}>
           {pastGuess.map((guess, index) =>
             renderListItem(guess, pastGuess.length - index),
           )}
@@ -118,11 +118,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
+    width: '60%',
   },
-  list: {
+  listContainer: {
     width: '80%',
     flex: 1,
+  },
+  list: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
 });
 

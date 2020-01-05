@@ -22,7 +22,7 @@ type ListItem = {
   item: number;
 };
 
-const iconPrefix = Platform.OS === 'ios' ? 'ios-' : 'md-';
+const iconPrefix = Platform.select({ios: 'ios-', android: 'md-'});
 
 const generateRandomBetween = (min: number, max: number, exclude: number) => {
   min = Math.ceil(min);
